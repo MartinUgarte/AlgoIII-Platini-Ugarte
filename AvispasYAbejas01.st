@@ -90,19 +90,13 @@ Habitat class
 
 !Habitat class methodsFor: 'as yet unclassified' stamp: 'rp 4/24/2022 10:34:48'!
 cantidadDeHuevosConFirmaGenetica: unaAvispa
-	^huevosDeAvispas at: unaAvispa.
-
-! !
+	^huevosDeAvispas at: unaAvispa.! !
 
 !Habitat class methodsFor: 'as yet unclassified' stamp: 'rp 4/24/2022 10:34:55'!
 cantidadDeHuevosDeAvispas
 	|cantidadTotalDeHuevos|
 	cantidadTotalDeHuevos := huevosDeAvispas values sum: [: unNumero | unNumero ] ifEmpty: [0] .
-	^cantidadTotalDeHuevos.
-	
-	
-	
-	! !
+	^cantidadTotalDeHuevos.! !
 
 !Habitat class methodsFor: 'as yet unclassified' stamp: 'rp 4/24/2022 10:47:24'!
 cantidadDeOrugas
@@ -149,7 +143,7 @@ reiniciar
 	huevosDeAvispas at: AvispaLara put: 0.! !
 
 
-!Habitat class methodsFor: '--** private fileout/in **--' stamp: 'rp 4/24/2022 11:18:30'!
+!Habitat class methodsFor: '--** private fileout/in **--' stamp: 'mr 4/24/2022 16:55:09'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -172,72 +166,198 @@ DenotativeObject subclass: #PruebasReproduccionDeAvispas
 PruebasReproduccionDeAvispas class
 	instanceVariableNames: ''!
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana' stamp: 'JMB 4/18/2022 18:38:11'!
+test01EnElInicioDeLosTiemposNoHayHuevos	
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 0! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana' stamp: 'JMB 4/21/2022 12:12:44'!
+test02CuandoOrianaLaAvispaSeReproducePorPrimeraVezDejaUnHuevo
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 1.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana' stamp: 'JMB 4/21/2022 12:12:11'!
+test03CadaVezQueOrianaSeReproduceDejaUnHuevoMas
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	self laAvispaOriana intentarReproducirse.
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 2.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana' stamp: 'JMB 4/21/2022 12:12:53'!
+test04ParaDejarUnHuevoOrianaLaAvispaReduceLaPoblacionDeUnaOrugaANinguna
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	self queElHabitatTengaUnaOrugaMas.
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeOrugas isEqualTo: 0.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana' stamp: 'JMB 4/21/2022 12:13:43'!
+test05ParaDejarUnHuevoOrianaLaAvispaDecrementaEnUnoLaPoblacionDeOrugasDelHabitat
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	self queElHabitatTengaDosOrugasMas.
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeOrugas isEqualTo: 1.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana'!
-! !
-
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Ornella'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Ornella'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Ornella'!
-! !
-
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly'!
-! !
-
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica'!
-! !
-
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Oriana' stamp: 'JMB 4/21/2022 12:13:22'!
+test06CuandoNoHayOrugasOrianaLaAvispaNoPuedeDejarHuevos
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 0.! !
 
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Ornella' stamp: 'JMB 4/21/2022 12:14:24'!
+test07CuandoOrnellaLaAvispaSeReproduceDejaUnHuevo
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	
+	self laAvispaOrnella intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 1.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Ornella' stamp: 'JMB 4/21/2022 12:14:18'!
+test08ParaDejarUnHuevoOrnellaLaAvispaReduceLaPoblacionDeUnaOrugaANinguna
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	self queElHabitatTengaUnaOrugaMas.
+	
+	self laAvispaOrnella intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeOrugas isEqualTo: 0.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Ornella' stamp: 'JMB 4/21/2022 12:14:11'!
+test09CuandoNoHayOrugasOrnellaLaAvispaNoPuedeDejarHuevos
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	
+	self laAvispaOrnella intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 0.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona'!
-! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly' stamp: 'JMB 4/21/2022 12:14:46'!
+test10CuandoPollyLaAvispaSeReproduceDejaUnHuevo
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	
+	self laAvispaPolly intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 1.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly' stamp: 'JMB 4/21/2022 12:14:40'!
+test11ParaDejarUnHuevoPollyLaAvispaReduceLaPoblacionDeUnaPolillaANinguna
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	self queElHabitatTengaUnaPolillaMas.
+	
+	self laAvispaPolly intentarReproducirse.
+	
+	Assert that: self habitat cantidadDePolillas isEqualTo: 0.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly' stamp: 'JMB 4/21/2022 12:14:36'!
+test12ParaDejarUnHuevoPollyLaAvispaDecrementaEnUnoLaPoblacionDePolillasDelHabitat
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	self queElHabitatTengaDosPolillasMas.
+	
+	self laAvispaPolly intentarReproducirse.
+	
+	Assert that: self habitat cantidadDePolillas isEqualTo: 1.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Polly' stamp: 'JMB 4/21/2022 12:14:30'!
+test13CuandoNoHayPolillasPollyLaAvispaNoPuedeDejarHuevos
+	self retrocederElHabitatAlInicioDeLosTiempos.
+	
+	self laAvispaPolly intentarReproducirse.
+	
+	Assert that: self habitat cantidadDeHuevosDeAvispas isEqualTo: 0.! !
+
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica' stamp: 'JMB 4/21/2022 12:15:06'!
+test14CuandoOrianaLaAvispaSeReproduceDejaUnHuevoConSuFirmaGenetica
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeOriana isEqualTo: 1.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica' stamp: 'JMB 4/21/2022 12:15:02'!
+test15CuandoOrianaLaAvispaAunNoSeReprodujoNoTieneHuevosConSuFirmaGenetica
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	
+	self laAvispaOriana intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeOriana isEqualTo: 0.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica' stamp: 'JMB 4/21/2022 12:14:58'!
+test16CuandoPollyLaAvispaSeReproduceDejaUnHuevoConSuFirmaGenetica
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	
+	self laAvispaPolly intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDePolly isEqualTo: 1.
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeOriana isEqualTo: 0.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - firma genetica' stamp: 'JMB 4/21/2022 12:14:54'!
+test17CuandoOrnellaLaAvispaSeReproduceDejaUnHuevoConLaMismaFirmaGeneticaQueOriana
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	
+	self laAvispaOrnella intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeOrnella isEqualTo: 1.
+	Assert 
+		that: self cantidadDeHuevosConLaFirmaGeneticaDeOrnella  
+		isEqualTo: self cantidadDeHuevosConLaFirmaGeneticaDeOriana! !
+
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona' stamp: 'JMB 4/21/2022 12:15:27'!
+test18CuandoLaraLaAvispaSeReproduceDejaUnHuevoConSuFirmaGenetica
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	self laAvispaOrnella intentarReproducirse.
+	
+	self laAvispaLara intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeLara isEqualTo: 1.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona' stamp: 'JMB 4/21/2022 12:15:22'!
+test19CuandoLaraLaAvispaSeReproduceLeSacaElHuevoAOtraAvispa
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	self laAvispaOriana intentarReproducirse.
+	
+	self laAvispaLara intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeOriana isEqualTo: 0.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona' stamp: 'JMB 4/21/2022 12:15:18'!
+test20CuandoLaraLaAvispaSeReproduceLeSacaElHuevoAPolly
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+	self hacerQueElHabitatTengaLosRecursosSuficientes.
+	self laAvispaPolly intentarReproducirse.
+	
+	self laAvispaLara intentarReproducirse.
+	
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDePolly isEqualTo: 0.! !
+
+!PruebasReproduccionDeAvispas class methodsFor: 'tests - Lara la ladrona' stamp: 'JMB 4/21/2022 12:15:12'!
+test21CuandoLaraLaAvispaNoTieneRecursosNoDejaUnHuevo
+	self retrocederElHabitatAlInicioDeLosTiempos. 
+		
+	self laAvispaLara intentarReproducirse.
+		
+	Assert that: self cantidadDeHuevosConLaFirmaGeneticaDeLara isEqualTo: 0.! !
 
 
 !PruebasReproduccionDeAvispas class methodsFor: 'Para completar' stamp: 'rp 4/24/2022 10:13:25'!
@@ -256,21 +376,22 @@ cantidadDeHuevosConLaFirmaGeneticaDeOrnella
 cantidadDeHuevosConLaFirmaGeneticaDePolly
 	^Habitat cantidadDeHuevosConFirmaGenetica: AvispaPolly.! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'Para completar'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'Para completar' stamp: 'mr 4/24/2022 16:50:38'!
+habitat
+	^Habitat! !
 
 !PruebasReproduccionDeAvispas class methodsFor: 'Para completar' stamp: 'rp 4/24/2022 11:14:15'!
 hacerQueElHabitatTengaLosRecursosSuficientes
 	self queElHabitatTengaDosOrugasMas.
-	self queElHabitatTengaDosPolillasMas.
-	! !
+	self queElHabitatTengaDosPolillasMas.! !
 
 !PruebasReproduccionDeAvispas class methodsFor: 'Para completar' stamp: 'rp 4/24/2022 10:10:37'!
 laAvispaLara
 	^AvispaLara ! !
 
-!PruebasReproduccionDeAvispas class methodsFor: 'Para completar'!
-! !
+!PruebasReproduccionDeAvispas class methodsFor: 'Para completar' stamp: 'mr 4/24/2022 16:50:49'!
+laAvispaOriana
+	^AvispaOriana! !
 
 !PruebasReproduccionDeAvispas class methodsFor: 'Para completar' stamp: 'rp 4/24/2022 10:10:52'!
 laAvispaOrnella
