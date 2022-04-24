@@ -1,8 +1,7 @@
 # Ejercicio
 
-## 01 - Avispas y Abejas
+**01 - Avispas y Abejas**
 
----
 **Alumnos:** Rocio Platini y Martin Ugarte
 
 **Materia:** Algoritmos y Programación III
