@@ -2,7 +2,6 @@
 
 ## 02 - Código Repetido
 
----
 **Alumnos:** Rocio Platini y Martin Ugarte
 
 **Materia:** Algoritmos y Programación III
