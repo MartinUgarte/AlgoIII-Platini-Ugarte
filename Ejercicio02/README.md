@@ -1,6 +1,6 @@
 # Ejercicio
 
-## 02 - Código Repetido
+**02 - Código Repetido**
 
 **Alumnos:** Rocio Platini y Martin Ugarte
 
